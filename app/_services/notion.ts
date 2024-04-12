@@ -12,14 +12,18 @@ export async function getPosts() {
     database_id: DATABASE_ID,
   });
 
+  console.log(JSON.stringify(response, null, 2));
+
   const typedResponse = response as unknown as NotionDatabaseResponse;
 
   return typedResponse.results.map((post) => {
+    const imgUrl = post.properties.img?.files?.[0]?.file.url ?? null;
     return {
       id: post.id,
       title: post.properties.title.title[0].plain_text,
       slug: post.properties.slug.rich_text[0].plain_text,
       createdAt: post.created_time,
+      imgUrl: post.properties.img.files[0].file.url,
     };
   });
 }

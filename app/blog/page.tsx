@@ -1,6 +1,6 @@
 import { getPosts } from "../_services/notion";
 import Link from "next/link";
-
+import Image from "next/image";
 export default async function BlogHome() {
   const posts = await getPosts();
 
@@ -12,14 +12,20 @@ export default async function BlogHome() {
         <ul>
           {posts.map((post) => (
             <li key={post.id} className="mb-3">
-              <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-              <div className="space-x-2"></div>
-
-              <p>
-                {new Intl.DateTimeFormat("pt-BR").format(
-                  new Date(post.createdAt)
-                )}
-              </p>
+              <Link href={`/blog/${post.slug}`}>
+                {post.title}
+                <Image
+                  src={post.imgUrl}
+                  width={500}
+                  height={500}
+                  alt="Picture of the author"
+                />
+                <p>
+                  {new Intl.DateTimeFormat("pt-BR").format(
+                    new Date(post.createdAt)
+                  )}
+                </p>
+              </Link>
             </li>
           ))}
         </ul>
