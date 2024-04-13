@@ -13,13 +13,15 @@ export default async function BlogHome() {
           {posts.map((post) => (
             <li key={post.id} className="mb-3">
               <Link href={`/blog/${post.slug}`}>
-                {post.title}
                 <Image
                   src={post.imgUrl}
                   width={500}
-                  height={500}
+                  height={200}
                   alt="Picture of the author"
+                  priority
                 />
+                <h2>{post.title}</h2>
+                <p>{post.preview}</p>
                 <p>
                   {new Intl.DateTimeFormat("pt-BR").format(
                     new Date(post.createdAt)

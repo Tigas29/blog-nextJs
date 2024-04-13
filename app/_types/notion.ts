@@ -4,19 +4,19 @@ export interface NotionDatabaseResponse {
   next_cursor?: any;
   has_more: boolean;
   type: string;
-  page_or_database: PageOrDatabase;
+  page_or_database: Pageordatabase;
   request_id: string;
 }
 
-export interface PageOrDatabase {}
+export interface Pageordatabase {}
 
 export interface Result {
   object: string;
   id: string;
   created_time: string;
   last_edited_time: string;
-  created_by: CreatedBy;
-  last_edited_by: CreatedBy;
+  created_by: Createdby;
+  last_edited_by: Createdby;
   cover?: any;
   icon?: any;
   parent: Parent;
@@ -30,6 +30,7 @@ export interface Result {
 export interface Properties {
   slug: Slug;
   img: Img;
+  preview: Slug;
   tags: Tags;
   title: Title;
 }
@@ -37,16 +38,16 @@ export interface Properties {
 export interface Title {
   id: string;
   type: string;
-  title: RichText[];
+  title: Richtext[];
 }
 
 export interface Tags {
   id: string;
   type: string;
-  multi_select: MultiSelect[];
+  multi_select: Multiselect[];
 }
 
-export interface MultiSelect {
+export interface Multiselect {
   id: string;
   name: string;
   color: string;
@@ -72,10 +73,10 @@ export interface File {
 export interface Slug {
   id: string;
   type: string;
-  rich_text: RichText[];
+  rich_text: Richtext[];
 }
 
-export interface RichText {
+export interface Richtext {
   type: string;
   text: Text;
   annotations: Annotations;
@@ -102,7 +103,7 @@ export interface Parent {
   database_id: string;
 }
 
-export interface CreatedBy {
+export interface Createdby {
   object: string;
   id: string;
 }
